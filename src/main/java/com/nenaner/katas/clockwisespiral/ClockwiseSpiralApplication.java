@@ -1,5 +1,7 @@
 package com.nenaner.katas.clockwisespiral;
 
+import java.security.InvalidParameterException;
+
 public class ClockwiseSpiralApplication {
     private Integer[][] spiral;
     private int lastNumberWritten;
@@ -7,6 +9,9 @@ public class ClockwiseSpiralApplication {
     private boolean numberWritten;
 
     public Integer[][] generateSpiral(int sizeOfSpiralToGenerate) {
+        if (sizeOfSpiralToGenerate <= 0) {
+            throw new InvalidParameterException("The size of the spiral requested need to be a positive integer.");
+        }
         spiral = new Integer[sizeOfSpiralToGenerate][sizeOfSpiralToGenerate];
         lastNumberWritten = 0;
         sizeOfSpiral = sizeOfSpiralToGenerate;

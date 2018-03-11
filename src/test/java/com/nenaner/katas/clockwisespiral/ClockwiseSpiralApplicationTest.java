@@ -3,6 +3,8 @@ package com.nenaner.katas.clockwisespiral;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.security.InvalidParameterException;
+
 import static org.junit.Assert.assertArrayEquals;
 
 public class ClockwiseSpiralApplicationTest {
@@ -88,5 +90,10 @@ public class ClockwiseSpiralApplicationTest {
                 {16,15,14,13,12,11}
         };
         assertArrayEquals(expectedResult, result);
+    }
+
+    @Test(expected = InvalidParameterException.class)
+    public void itHandlesInvalidParameter() {
+        subject.generateSpiral(-1);
     }
 }
