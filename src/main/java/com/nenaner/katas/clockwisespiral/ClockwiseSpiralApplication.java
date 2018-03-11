@@ -25,31 +25,31 @@ public class ClockwiseSpiralApplication {
 
     private void writeTopRow(int spiralCount) {
         for (int x = 0; x < sizeOfSpiral; x++) {
-            writeNumberToCellIffEmpty(spiralCount, x);
+            writeNumberToCellIfEmpty(spiralCount, x);
         }
     }
 
 
     private void writeRightRow(int spiralCount) {
         for (int x = 0; x < sizeOfSpiral; x++) {
-            writeNumberToCellIffEmpty(x, sizeOfSpiral - spiralCount - 1);
+            writeNumberToCellIfEmpty(x, sizeOfSpiral - spiralCount - 1);
         }
     }
 
     private void writeBottomRow(int spiralCount) {
         for (int x = sizeOfSpiral - 1; x >= 0; x--) {
-            writeNumberToCellIffEmpty(sizeOfSpiral - spiralCount - 1, x);
+            writeNumberToCellIfEmpty(sizeOfSpiral - spiralCount - 1, x);
         }
     }
 
     private void writeLeftRow(int spiralCount) {
         for (int x = sizeOfSpiral - 1; x >= 0; x--) {
-            writeNumberToCellIffEmpty(x, spiralCount);
+            writeNumberToCellIfEmpty(x, spiralCount);
         }
     }
 
-    private void writeNumberToCellIffEmpty(int x, int y) {
-        if (spiral[x][y] == null) {
+    private void writeNumberToCellIfEmpty(int x, int y) {
+        if (x >=0 && x < sizeOfSpiral && y >= 0 && y < sizeOfSpiral && spiral[x][y] == null) {
             spiral[x][y] = ++lastNumberWritten;
             numberWritten = true;
         }
