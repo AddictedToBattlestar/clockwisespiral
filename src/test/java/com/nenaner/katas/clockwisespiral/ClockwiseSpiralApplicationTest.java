@@ -16,10 +16,21 @@ public class ClockwiseSpiralApplicationTest {
 
     @Test
     public void spiralOf1() {
-        int[][] result = subject.generateSpiral(1);
+        Integer[][] result = subject.generateSpiral(1);
 
-        int[][] expectedResult = {
+        Integer[][] expectedResult = {
                 {1}
+        };
+        assertArrayEquals(expectedResult, result);
+    }
+
+    @Test
+    public void spiralOf2() {
+        Integer[][] result = subject.generateSpiral(2);
+
+        Integer[][] expectedResult = {
+                {1, 2},
+                {4, 3}
         };
         assertArrayEquals(expectedResult, result);
     }
