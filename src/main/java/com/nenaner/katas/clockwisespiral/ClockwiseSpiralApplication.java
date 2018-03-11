@@ -4,36 +4,54 @@ public class ClockwiseSpiralApplication {
     private Integer[][] spiral;
     private int lastNumberWritten;
     private int sizeOfSpiral;
+    private boolean numberWritten;
 
     public Integer[][] generateSpiral(int sizeOfSpiralToGenerate) {
         spiral = new Integer[sizeOfSpiralToGenerate][sizeOfSpiralToGenerate];
         lastNumberWritten = 0;
         sizeOfSpiral = sizeOfSpiralToGenerate;
-        writeTopRow();
-        writeRightRow();
-        writeBottomRow();
+        int spiralCount = 0;
+        do {
+            numberWritten = false;
+            writeTopRow(spiralCount);
+            writeRightRow(spiralCount);
+            writeBottomRow(spiralCount);
+            writeLeftRow(spiralCount);
+            spiralCount++;
+        } while (numberWritten);
+
         return spiral;
     }
 
-    private void writeTopRow() {
+    private void writeTopRow(int spiralCount) {
         for (int x = 0; x < sizeOfSpiral; x++) {
-            spiral[0][x] = ++lastNumberWritten;
+            writeNumberToCellIffEmpty(spiralCount, x);
         }
     }
 
-    private void writeRightRow() {
+
+    private void writeRightRow(int spiralCount) {
         for (int x = 0; x < sizeOfSpiral; x++) {
-            if (spiral[x][sizeOfSpiral - 1] == null) {
-                spiral[x][sizeOfSpiral - 1] = ++lastNumberWritten;
-            }
+            writeNumberToCellIffEmpty(x, sizeOfSpiral - spiralCount - 1);
         }
     }
 
-    private void writeBottomRow() {
+    private void writeBottomRow(int spiralCount) {
         for (int x = sizeOfSpiral - 1; x >= 0; x--) {
-            if (spiral[sizeOfSpiral - 1][x] == null) {
-                spiral[sizeOfSpiral - 1][x] = ++lastNumberWritten;
-            }
+            writeNumberToCellIffEmpty(sizeOfSpiral - spiralCount - 1, x);
+        }
+    }
+
+    private void writeLeftRow(int spiralCount) {
+        for (int x = sizeOfSpiral - 1; x >= 0; x--) {
+            writeNumberToCellIffEmpty(x, spiralCount);
+        }
+    }
+
+    private void writeNumberToCellIffEmpty(int x, int y) {
+        if (spiral[x][y] == null) {
+            spiral[x][y] = ++lastNumberWritten;
+            numberWritten = true;
         }
     }
 }

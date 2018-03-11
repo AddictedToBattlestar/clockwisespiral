@@ -34,4 +34,16 @@ public class ClockwiseSpiralApplicationTest {
         };
         assertArrayEquals(expectedResult, result);
     }
+
+    @Test
+    public void spiralOf3() {
+        Integer[][] result = subject.generateSpiral(3);
+
+        Integer[][] expectedResult = {
+                {1, 2, 3},
+                {8, 9, 4},
+                {7, 6, 5}
+        };
+        assertArrayEquals(expectedResult, result);
+    }
 }
