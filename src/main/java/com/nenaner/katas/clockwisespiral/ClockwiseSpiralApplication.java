@@ -29,7 +29,6 @@ public class ClockwiseSpiralApplication {
         }
     }
 
-
     private void writeRightRow(int spiralCount) {
         for (int x = 0; x < sizeOfSpiral; x++) {
             writeNumberToCellIfEmpty(x, sizeOfSpiral - spiralCount - 1);
@@ -49,7 +48,7 @@ public class ClockwiseSpiralApplication {
     }
 
     private void writeNumberToCellIfEmpty(int x, int y) {
-        if (x >=0 && x < sizeOfSpiral && y >= 0 && y < sizeOfSpiral && spiral[x][y] == null) {
+        if (x >= 0 && x < sizeOfSpiral && y >= 0 && y < sizeOfSpiral && spiral[x][y] == null) {
             spiral[x][y] = ++lastNumberWritten;
             numberWritten = true;
         }
